@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject _pauseMenu;     //Pause Menu GameObject, used to link to it to be capable to disable/enable it
+    [SerializeField] private GameObject _GameOverMenu;     //Game Over GameObject, used to link to it to be capable to disable/enable it
 
     bool pause = false;
 
@@ -31,17 +32,21 @@ public class Pause : MonoBehaviour
         print("Resume");
     }
 
+    //Pasue Menu
     void Update()
     {
         if (Input.GetKeyDown("escape"))
         {
-            if (pause == true)
+            if(_GameOverMenu.activeSelf == false)
             {
-                ResumeButton();
-            }
-            else
-            {
-                PauseButton();
+                if (pause == true)
+                {
+                    ResumeButton();
+                }
+                else
+                {
+                    PauseButton();
+                }
             }
         }
     }
